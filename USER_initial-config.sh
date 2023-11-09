@@ -3,8 +3,12 @@
 pwd=$(pwd)
 
 ## Go to .app-installers folder
+mv ~/.app-installers
 cd ~/.app-installers
 
+## Install synth-shell
+git clone --recursive https://github.com/andresgongora/synth-shell.git
+chmod +x synth-shell/setup.sh
 cd synth-shell
 ./setup.sh
 

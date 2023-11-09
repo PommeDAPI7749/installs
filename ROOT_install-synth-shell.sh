@@ -5,7 +5,7 @@ pwd=$(pwd)
 ## Go to .app-installers folder
 cd ~/.app-installers
 
-## Install Discord source
+## Install synth-shell
 git clone --recursive https://github.com/andresgongora/synth-shell.git
 chmod +x synth-shell/setup.sh
 cd synth-shell
