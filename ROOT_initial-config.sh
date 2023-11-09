@@ -44,7 +44,7 @@ dnf groupupdate sound-and-video -y
 mkdir ~/.app-installers
 
 # Install Apps
-sudo dnf install gnome-tweaks -y
+dnf install gnome-tweaks -y
 flatpak install flathub com.mattjakeman.ExtensionManager -y
 
 # Install packages
