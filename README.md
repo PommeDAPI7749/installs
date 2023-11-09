@@ -1,0 +1,1 @@
+# Installs pour fedora
