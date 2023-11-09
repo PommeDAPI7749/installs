@@ -29,7 +29,7 @@ dnf groupupdate core -y
 hostnamectl set-hostname "fedora-pommedapi"
 
 # Install flatpak
-flatpak remote-add --if-not-exists flathub https://dl.flathub.org/repo/flathub.flatpakrepo -y
+flatpak remote-add --if-not-exists flathub https://dl.flathub.org/repo/flathub.flatpakrepo
 
 # Install theme
 wget https://github.com/lassekongo83/adw-gtk3/archive/refs/tags/v5.1.tar.gz
@@ -106,3 +106,28 @@ if [ $vscode = "y" || $vscode = "Y" || $vscode = '' ]
 then
     ./ROOT_install-visual-studio-code.sh
 fi
+
+# # Install Cisco Packet Tracer if user wants to
+# echo "Do you want to install Cisco Packet Tracer? (Y/n)"
+# read packettracer
+# if [ $packettracer = "y" || $packettracer = "Y" || $packettracer = '' ]
+# then
+#     flatpak install flathub com.netacad.PacketTracer -y
+# fi
+
+# Install Wireshark if user wants to
+echo "Do you want to install Wireshark? (Y/n)"
+read wireshark
+if [ $wireshark = "y" || $wireshark = "Y" || $wireshark = '' ]
+then
+    flatpak install flathub org.wireshark.Wireshark -y
+fi
+
+# Install GitKraken if user wants to
+echo "Do you want to install GitKraken? (Y/n)"
+read gitkraken
+if [ $gitkraken = "y" || $gitkraken = "Y" || $gitkraken = '' ]
+then
+    flatpak install flathub com.axosoft.GitKraken -y
+fi
+
