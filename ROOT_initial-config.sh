@@ -47,13 +47,23 @@ mkdir ~/.app-installers
 sudo dnf install gnome-tweaks -y
 flatpak install flathub com.mattjakeman.ExtensionManager -y
 
+# Install packages
+dnf install openssl -y
+
+# Install Docker
+dnf install dnf-plugins-core -y
+dnf config-manager --add-repo https://download.docker.com/linux/fedora/docker-ce.repo
+dnf install docker-ce docker-ce-cli containerd.io docker-buildx-plugin docker-compose-plugin -y
+systemctl start docker
+docker run hello-world
+
 # Install Firefox Adwaita theme
 git clone https://github.com/rafaelmardojai/firefox-gnome-theme.git && cd firefox-gnome-theme && ./scripts/auto-install.sh && cd .. && rm -rf firefox-gnome-theme
 
 # Install Discord if user wants to
 echo "Do you want to install Discord? (Y/n)"
 read discord
-if [ $discord = "y" || $discord = "Y" || $discord = '' ]
+if [[ $discord = "y" || $discord = "Y" || $discord = '' ]]
 then
     ./ROOT_install-discord.sh
 fi
@@ -61,7 +71,7 @@ fi
 # Install Spotify if user wants to
 echo "Do you want to install Spotify? (Y/n)"
 read spotify
-if [ $spotify = "y" || $spotify = "Y" || $spotify = '' ]
+if [[ $spotify = "y" || $spotify = "Y" || $spotify = '' ]]
 then
     flatpak install flathub com.spotify.Client
 fi
@@ -69,7 +79,7 @@ fi
 # Install Steam if user wants to
 echo "Do you want to install Steam? (Y/n)"
 read steam
-if [ $steam = "y" || $steam = "Y" || $steam = '' ]
+if [[ $steam = "y" || $steam = "Y" || $steam = '' ]]
 then
     flatpak install flathub com.valvesoftware.Steam -y
     flatpak install flathub io.github.Foldex.AdwSteamGtk -y
@@ -78,7 +88,7 @@ fi
 # Install synth-shell if user wants to
 echo "Do you want to install synth-shell? (Y/n)"
 read synth
-if [ $synth = "y" || $synth = "Y" || $synth = '' ]
+if [[ $synth = "y" || $synth = "Y" || $synth = '' ]]
 then
     ./ROOT_install-synth-shell.sh
 fi
@@ -86,7 +96,7 @@ fi
 # Install Beekeeper Studio if user wants to
 echo "Do you want to install Beekeeper Studio? (Y/n)"
 read beekeeper
-if [ $beekeeper = "y" || $beekeeper = "Y" || $beekeeper = '' ]
+if [[ $beekeeper = "y" || $beekeeper = "Y" || $beekeeper = '' ]]
 then
     flatpak install flathub io.beekeeperstudio.BeekeeperStudio -y
 fi
@@ -94,7 +104,7 @@ fi
 # Install Microsoft Teams if user wants to
 echo "Do you want to install Microsoft Teams? (Y/n)"
 read teams
-if [ $teams = "y" || $teams = "Y" || $teams = '' ]
+if [[ $teams = "y" || $teams = "Y" || $teams = '' ]]
 then
     flatpak install flathub com.microsoft.Teams -y
 fi
@@ -102,7 +112,7 @@ fi
 # Install Visual Studio Code if user wants to
 echo "Do you want to install Visual Studio Code? (Y/n)"
 read vscode
-if [ $vscode = "y" || $vscode = "Y" || $vscode = '' ]
+if [[ $vscode = "y" || $vscode = "Y" || $vscode = '' ]]
 then
     ./ROOT_install-visual-studio-code.sh
 fi
@@ -110,7 +120,7 @@ fi
 # # Install Cisco Packet Tracer if user wants to
 # echo "Do you want to install Cisco Packet Tracer? (Y/n)"
 # read packettracer
-# if [ $packettracer = "y" || $packettracer = "Y" || $packettracer = '' ]
+# if [[ $packettracer = "y" || $packettracer = "Y" || $packettracer = '' ]]
 # then
 #     flatpak install flathub com.netacad.PacketTracer -y
 # fi
@@ -118,7 +128,7 @@ fi
 # Install Wireshark if user wants to
 echo "Do you want to install Wireshark? (Y/n)"
 read wireshark
-if [ $wireshark = "y" || $wireshark = "Y" || $wireshark = '' ]
+if [[ $wireshark = "y" || $wireshark = "Y" || $wireshark = '' ]]
 then
     flatpak install flathub org.wireshark.Wireshark -y
 fi
@@ -126,8 +136,25 @@ fi
 # Install GitKraken if user wants to
 echo "Do you want to install GitKraken? (Y/n)"
 read gitkraken
-if [ $gitkraken = "y" || $gitkraken = "Y" || $gitkraken = '' ]
+if [[ $gitkraken = "y" || $gitkraken = "Y" || $gitkraken = '' ]]
 then
     flatpak install flathub com.axosoft.GitKraken -y
 fi
 
+# Install Java if user wants to
+echo "Do you want to install Java? (Y/n)"
+read java
+if [[ $java = "y" || $java = "Y" || $java = '' ]]
+then
+    dnf install java-latest-openjdk.x86_64 -y
+fi
+
+# Install MySQL if user wants to
+echo "Do you want to install MySQL? (Y/n)"
+read mysql
+if [[ $mysql = "y" || $mysql = "Y" || $mysql = '' ]]
+then
+    dnf install community-mysql-server -y
+    systemctl start mysqld.service
+    mysql --user root --execute "select version()"
+fi
