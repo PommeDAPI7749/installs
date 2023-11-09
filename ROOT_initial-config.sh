@@ -1,5 +1,7 @@
 #!/bin/bash
 
+path=$(pwd)
+
 cd
 
 # DNF config
@@ -59,6 +61,8 @@ docker run hello-world
 
 # Install Firefox Adwaita theme
 git clone https://github.com/rafaelmardojai/firefox-gnome-theme.git && cd firefox-gnome-theme && ./scripts/auto-install.sh && cd .. && rm -rf firefox-gnome-theme
+
+cd $path
 
 # Install Discord if user wants to
 echo "Do you want to install Discord? (Y/n)"
