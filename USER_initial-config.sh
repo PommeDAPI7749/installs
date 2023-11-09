@@ -21,5 +21,4 @@ cp $pwd/configs/synth-shell/user-greeter.config ~/.config/synth-shell/synth-shel
 echo "alias update='dnf update -y && dnf upgrade -y && dnf autoremove -y && dnf clean all && flatpak update -y && flatpak uninstall --unused -y && flatpak repair -y'
 alias clear='clear && source ~/.bashrc'" >> ~/.bashrc
 
-source ~/.bashrc
-clear
+clear && source ~/.bashrc

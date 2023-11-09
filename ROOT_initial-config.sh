@@ -166,5 +166,4 @@ then
     mysql --user root --execute "select version()"
 fi
 
-source ~/.bashrc
-clear
+clear && source ~/.bashrc
