@@ -8,7 +8,10 @@ cd
 echo "fastestmirror=True
 max_parallel_downloads=10
 defaultyes=True
-keepcache=True" >> /etc/dnf/dnf.conf 
+keepcache=True" >> /etc/dnf/dnf.conf
+
+echo "alias update='dnf update -y && dnf upgrade -y && dnf autoremove -y && dnf clean all && flatpak update -y && flatpak uninstall --unused -y && flatpak repair -y'
+alias clear='clear && source ~/.bashrc'" >> ~/.bashrc
 
 # Desinstallation des logiciels inutils
 dnf remove libreoffice* -y
@@ -162,3 +165,6 @@ then
     systemctl start mysqld.service
     mysql --user root --execute "select version()"
 fi
+
+source ~/.bashrc
+clear
