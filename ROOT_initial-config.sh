@@ -53,7 +53,7 @@ dnf install gnome-tweaks -y
 flatpak install flathub com.mattjakeman.ExtensionManager -y
 
 # Install packages
-dnf install openssl -y
+dnf install openssl lm_sensors -y
 
 # Install Docker
 dnf install dnf-plugins-core -y
